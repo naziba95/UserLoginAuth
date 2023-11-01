@@ -4,12 +4,14 @@ const jwt = require('jsonwebtoken');
 
 const handleLogin = async (req, res) => {
   const { username, pwd } = req.body;
-  if (!username || !pwd) return res.status(400).json({ 'message': 'username and password are required' });
+  if (!username || !pwd) return res.status(400).json({ 'message': 'Username and password are required' });
 
   try {
     const foundUser = await User.findOne({ username: username }).exec();
     
-    if (!foundUser) return res.sendStatus(401); // Unauthorized
+    if (!foundUser) {
+      return res.status(401).json({ message: 'Invalid login details' }); // Unauthorized
+    }
     
     const match = await bcrypt.compare(pwd, foundUser.password);
     if (match) {
@@ -32,7 +34,7 @@ const handleLogin = async (req, res) => {
 
       res.json({ message: 'Login Successful', user: foundUser }); // Return user details without access token
     } else {
-      res.sendStatus(401); // Unauthorized
+      return res.status(401).json({ message: 'Invalid login details' }); // Unauthorized
     }
   } catch (error) {
     console.error('Error during login:', error);
