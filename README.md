@@ -4,7 +4,7 @@ Sign up, Login and logout authentication built with Node/Express and JWT.
 
 **POST**
 Register user:
-URL: localhost:3000/api/register
+URL: https://userloginauth-vm0f.onrender.com/api/register
 SAMPLE REQUEST BODY: 
 {
     "username":"Atoshi",
@@ -13,7 +13,7 @@ SAMPLE REQUEST BODY:
 
 **POST**
 USER login
-URL: localhost:3000/api/auth
+URL: https://userloginauth-vm0f.onrender.com/api/auth
 SAMPLE REQUEST BODY:
 {
     "username":"Atoshi",
@@ -22,5 +22,5 @@ SAMPLE REQUEST BODY:
 
 **POST**
 USER logout
-URL: localhost:3000/api/logout
+URL: https://userloginauth-vm0f.onrender.com/api/logout
 NO REQUEST BODY
