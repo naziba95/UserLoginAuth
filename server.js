@@ -29,6 +29,9 @@ connectDB();
 // const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
+// Enable CORS for all routes
+app.use(cors());
+
 // Sign on and register route should be accessible without token generation
  app.use('/api/auth', authRoute);
  app.use('/api/register', registerRoute);
